@@ -1,7 +1,7 @@
 import './App.css';
 import {Ref} from "./components/useRef";
 import {Memo} from "./components/useMemo";
-import {Callback} from "./components/useCallback";
+//import {Callback} from "./components/useCallback";
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
           <br/>
           <hr/>
           <br/>
-          <Callback/>
+        {/*  <Callback/>  */}
     </div>
   );
 }
