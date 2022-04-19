@@ -1,0 +1,7 @@
+ useCallback hook is used when you have a component in which the child is rerendering again and again without need.
+ youtube link: https://www.youtube.com/watch?v=IL82CzlaCys
+
+ useMemo hook is used to save the data into cache memory, so that if a costly function or anything with same params
+ is initiated during rerendering, useMemo will directly pick the value from the cache memory instead of running it 
+ again while re rendering
+ youtube link: https://www.youtube.com/watch?v=qySZIzZvZOY&t=567s
