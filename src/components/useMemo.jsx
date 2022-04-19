@@ -1,24 +1,37 @@
-import { useState, useMemo, useEffect} from "react";
+import { useState, useMemo} from "react";
 
 export const Memo=()=>{
 
-      const [num,setNum]=useState(1);
-      
-      const costly=useMemo(()=>{
-        calc(num);
-      },[num])
+    let [num,setNum]=useState(0);
+   
+    let [col,setCol]=useState(false);
 
-      function calc(n){
-        for(var i=0;i<10000000;i++){}
-        return (n*2);
-      }
-      //console.log(costly);
+    const inc=()=>{
+      setNum(num+1);
+    }
+
+    const colorChange={
+      color: col===false ? "red" : "green"
+    }
+    
+    const costlyEvenOddCheck=  useMemo(()=>{
+    //  const costlyEvenOddCheck=()=>{ //Difference in between code render can be noted when useMemo is not used.
+      for(var i=0;i<1000000000;i++){}
+      return num%2===0;
+    //  }
+    },[num]); 
+
     return (
         <div>
-          <input placeholder="Enter Number" onChange={n=>{setNum(n.target.value)}}/>
-          <div>Input Number: {num}</div>
-          <div>Number after function execution: {costly} </div>
-          <p>First time loading will take some time, but second time loading will be faster than first load</p>
+
+        <div>The num: {num}.</div>
+        <div> Displayed num is {costlyEvenOddCheck /*()*/ ?"Even":"Odd"}</div>
+        <button onClick={inc}>Increment</button>
+         <br/>
+         <br/>
+        <div style={colorChange}>Color Change</div>
+        <div>{col===false ? "Red" : "Green"} is the color.</div>
+        <button onClick={()=>{col===false ? setCol(true) : setCol(false)}}>change</button>
         </div>
     );
     
